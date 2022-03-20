@@ -6,7 +6,6 @@ import ru.javarush.khryukin.cryptoanalizer.commands.Encoder;
 import ru.javarush.khryukin.cryptoanalizer.constants.Constants;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
@@ -15,10 +14,10 @@ import java.util.Scanner;
 public class Runner {
     public static void main(String[] args) {
         System.out.println("Данная программа работает в 3 режимах:");
-        System.out.println("1 - кодирование исходного файла шифром Цезаря");
-        System.out.println("2 - раскодирование исходного файла шифром Цезаря");
-        System.out.println("3 - раскодирование исходного файла методом Brute Force");
-        System.out.println("Выберите режим работы команды:");
+        System.out.println("1 - Шифрование файла шифром Цезаря");
+        System.out.println("2 - Расшифровывание файла шифром Цезаря");
+        System.out.println("3 - Расшифровывание файла методом Brute Force");
+        System.out.println("Выберите режим работы программы:");
         Scanner scanner = new Scanner(System.in);
         int num;
         while (true) {
