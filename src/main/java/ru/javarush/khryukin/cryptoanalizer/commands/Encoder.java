@@ -11,6 +11,7 @@ public class Encoder {
     public static final Path ENCODE_FILE_PATH = Path.of("text\\encode.txt");
 
     public static void encodeFunction(Path filePath, int key){
+        key = key % Constants.ALPHABET.length;
 
         try(FileReader fileReader = new FileReader(String.valueOf(filePath));
             FileWriter fileWriter = new FileWriter(String.valueOf(ENCODE_FILE_PATH))){

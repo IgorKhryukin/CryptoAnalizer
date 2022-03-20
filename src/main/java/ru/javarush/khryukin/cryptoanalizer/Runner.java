@@ -38,10 +38,24 @@ public class Runner {
             fileName = bufferedReader.readLine();
             if(num == 1){
                 System.out.println("Введите ключ для шифрования:");
-                key = Integer.parseInt(bufferedReader.readLine());
+                while (true) {
+                    key = Integer.parseInt(bufferedReader.readLine());
+                    if(key < 0){
+                        System.out.println("Ключ не может быть отрицательным, повторите ввод:");
+                    } else {
+                        break;
+                    }
+                }
             } else if(num == 2){
                 System.out.println("Введите ключ для расшифрования:");
-                key = Integer.parseInt(bufferedReader.readLine());
+                while (true) {
+                    key = Integer.parseInt(bufferedReader.readLine());
+                    if(key < 0){
+                        System.out.println("Ключ не может быть отрицательным, повторите ввод:");
+                    } else {
+                        break;
+                    }
+                }
             }
         } catch (IOException e){
             e.printStackTrace();

@@ -11,6 +11,7 @@ public class Decoder {
     public static final Path DECODE_FILE_PATH = Path.of("text\\decode.txt");
 
     public static void decodeFunction(Path filePath, int key){
+        key = key % Constants.ALPHABET.length;
 
         try(FileReader fileReader = new FileReader(String.valueOf(filePath));
             FileWriter fileWriter = new FileWriter(String.valueOf(DECODE_FILE_PATH))){
