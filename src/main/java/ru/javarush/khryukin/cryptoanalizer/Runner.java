@@ -8,21 +8,27 @@ import ru.javarush.khryukin.cryptoanalizer.constants.Constants;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
+        int workingMode;
+        String fileName = "";
+        int key = 0;
+
         System.out.println("Данная программа работает в 3 режимах:");
         System.out.println("1 - Шифрование файла шифром Цезаря");
         System.out.println("2 - Расшифровывание файла шифром Цезаря");
         System.out.println("3 - Расшифровывание файла методом Brute Force");
         System.out.println("Выберите режим работы программы:");
+
         Scanner scanner = new Scanner(System.in);
-        int num;
+
         while (true) {
-            num = scanner.nextInt();
-            if(num > 0 && num < 4){
+            workingMode = scanner.nextInt();
+            if(workingMode > 0 && workingMode < 4){
                 break;
             } else {
                 System.out.println("Не верно выбран режим работы, повторите ввод:");
@@ -31,11 +37,17 @@ public class Runner {
         System.out.println("Разместите исходный файл в папку text, которая находится в папке проекта.");
         System.out.println("Введите имя файла для работы. Например - test.txt");
 
-        String fileName = "";
-        int key = 0;
         try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))){
-            fileName = bufferedReader.readLine();
-            if(num == 1){
+            while(true) {
+                fileName = bufferedReader.readLine();
+                if(!Files.exists(Path.of("text\\" + fileName))){
+                    System.out.println("Файл с таким названием отсутсвует в папке text. " +
+                            "Проверьте наличие файла и корректность имени и повторите ввод.");
+                } else {
+                    break;
+                }
+            }
+            if(workingMode == 1){
                 System.out.println("Введите ключ для шифрования:");
                 while (true) {
                     key = Integer.parseInt(bufferedReader.readLine());
@@ -45,7 +57,7 @@ public class Runner {
                         break;
                     }
                 }
-            } else if(num == 2){
+            } else if(workingMode == 2){
                 System.out.println("Введите ключ для расшифрования:");
                 while (true) {
                     key = Integer.parseInt(bufferedReader.readLine());
@@ -62,10 +74,10 @@ public class Runner {
 
 
 
-        if(num == 1) {
+        if(workingMode == 1) {
             Encoder.encodeFunction(Path.of("text\\" + fileName), key);
             System.out.println("Зашифрованный файл можно найти по пути: " + Encoder.ENCODE_FILE_PATH.toAbsolutePath());
-        } else if(num == 2){
+        } else if(workingMode == 2){
             Decoder.decodeFunction(Path.of("text\\" + fileName), key);
             System.out.println("Расшифрованный файл можно найти по пути: " + Decoder.DECODE_FILE_PATH.toAbsolutePath());
         } else {

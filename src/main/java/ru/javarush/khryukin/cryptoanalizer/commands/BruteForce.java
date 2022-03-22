@@ -21,10 +21,12 @@ public class BruteForce {
                     if (str.contains(" и ") || str.contains(" в ") || str.contains(" с ") || str.contains(" о ") || str.contains(" на ") || str.contains(". ") || str.contains("! ") || str.contains(", ")) {
                         if (str.contains(". ") || str.contains("! ") || str.contains(", ")) {
                             if(str.contains(" и ") || str.contains(" в ") || str.contains(" с ") || str.contains(" о ") || str.contains(" на ")) {
-                                if(str.contains(" он ") || str.contains(" я ") || str.contains(" мы ") || str.contains("Вы ") || str.contains(" она ") || str.contains(" вы ")) {
-                                    System.out.println("Файл раскодирован");
-                                    flag = true;
-                                    break;
+                                if(str.contains(" он ") || str.contains(" я ") || str.contains(" мы ") || str.contains("Вы ") || str.contains(" она ") || str.contains(" вы ") || str.contains(" они ")) {
+                                    if(str.contains(", что ") || str.contains(", но ")) {
+                                        System.out.println("Файл раскодирован");
+                                        flag = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
